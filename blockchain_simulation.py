@@ -46,8 +46,11 @@ for block in blockchain:
 
 def is_chain_valid(chain):
     for i in range(1, len(chain)):
+        if chain[i].hash != chain[i].compute_hash():
+            return False
         if chain[i].previous_hash != chain[i - 1].hash:
             return False
     return True
+
 
 print("✅ Is Blockchain Valid?", is_chain_valid(blockchain))
