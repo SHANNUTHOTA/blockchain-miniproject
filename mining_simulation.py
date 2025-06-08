@@ -1,4 +1,4 @@
-import hashlib
+hyimport hashlib
 import time
 
 class Block:
@@ -46,6 +46,7 @@ blockchain[0].mineBlock(difficulty)
 
 for i in range(1, 3):
     new_block = next_block(blockchain[-1], f"Block {i} Data")
-    print(f"Mining Block {i}...")
+   print(f"✅ Block {self.index} successfully mined with difficulty {difficulty} using Proof of Work\n")
+
     new_block.mineBlock(difficulty)
     blockchain.append(new_block)
