@@ -1,4 +1,4 @@
-hyimport hashlib
+import hashlib
 import time
 
 class Block:
@@ -19,14 +19,13 @@ class Block:
         start_time = time.time()
         attempts = 0
 
-        # Try nonce values until hash starts with required zeros
         while not self.hash.startswith(prefix_str):
             self.nonce += 1
             self.hash = self.compute_hash()
             attempts += 1
 
         end_time = time.time()
-        print(f"Block {self.index} mined!")
+        print(f"✅ Block {self.index} successfully mined with difficulty {difficulty} using Proof of Work")
         print(f"Nonce found: {self.nonce}")
         print(f"Hash: {self.hash}")
         print(f"Attempts: {attempts}")
@@ -38,15 +37,17 @@ def create_genesis_block():
 def next_block(last_block, data):
     return Block(last_block.index + 1, time.time(), data, last_block.hash)
 
-difficulty = 4  # Number of leading zeros required
+# Difficulty level (number of leading zeros required in hash)
+difficulty = 4
 
+# Initialize blockchain with genesis block
 blockchain = [create_genesis_block()]
 print("Mining Genesis Block...")
 blockchain[0].mineBlock(difficulty)
 
+# Mine additional blocks
 for i in range(1, 3):
     new_block = next_block(blockchain[-1], f"Block {i} Data")
-   print(f"✅ Block {self.index} successfully mined with difficulty {difficulty} using Proof of Work\n")
-
+    print(f"Mining Block {i}...")
     new_block.mineBlock(difficulty)
     blockchain.append(new_block)
