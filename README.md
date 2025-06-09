@@ -34,5 +34,7 @@ How to Run
 Run each script independently using Python 3:
 
 python3 blockchain_simulation.py
+
 python3 mining_simulation.py
+
 python3 consensus_demo.py
